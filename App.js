@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import UserLayout from './src/UserLayout'
 
 class login extends Component{
 
@@ -12,19 +13,33 @@ class login extends Component{
     }
   }
 
+  validar = ()=>{
+    if(this.state.user == 'Felipe' && this.state.pass == '17231285'){
+      this.setState({
+        entrar: 1
+      })
+    }
+  }
+
   render(){
     var {user} = this.state;
     var {pass} = this.state;
     return(
       <View style = {styles.container}>
-        <View>
-          <Text style={styles.titulo}>Login de Usuario</Text>
-          <TextInput onChangeText={(user) => this.setState({user})} placeholder="Usuario:" style={styles.input}></TextInput>
-          <TextInput onChangeText={(pass) => this.setState({pass})} placeholder="Contraseña:" style={styles.input}></TextInput>
-          <View style={styles.boton}>
-            <Button title="Entrar"></Button>
+        {
+          this.state.entrar == 0 
+          ?
+          <View>
+            <Text style={styles.titulo}>Login de Usuario</Text>
+            <TextInput onChangeText={(user) => this.setState({user})} placeholder="Usuario:" style={styles.input}></TextInput>
+            <TextInput onChangeText={(pass) => this.setState({pass})} placeholder="Contraseña:" style={styles.input}></TextInput>
+            <View style={styles.boton}>
+              <Button title="Entrar" onPress={this.validar}></Button>
+            </View>
           </View>
-        </View>
+          :
+          <UserLayout user={this.state.user} pass={this.state.pass}></UserLayout>
+        }
       </View>
     )
   }
