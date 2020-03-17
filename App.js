@@ -2,13 +2,25 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 class login extends Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+      user: '',
+      pass: '',
+      entrar: 0
+    }
+  }
+
   render(){
+    var {user} = this.state;
+    var {pass} = this.state;
     return(
       <View style = {styles.container}>
         <View>
           <Text style={styles.titulo}>Login de Usuario</Text>
-          <TextInput placeholder="Usuario:" style={styles.input}></TextInput>
-          <TextInput placeholder="Contraseña:" style={styles.input}></TextInput>
+          <TextInput onChangeText={(user) => this.setState({user})} placeholder="Usuario:" style={styles.input}></TextInput>
+          <TextInput onChangeText={(pass) => this.setState({pass})} placeholder="Contraseña:" style={styles.input}></TextInput>
           <View style={styles.boton}>
             <Button title="Entrar"></Button>
           </View>
