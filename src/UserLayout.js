@@ -6,7 +6,7 @@ function UserLayout(props){
         <View style={styles.container}>
             <Text style={styles.titulo}>Bienvenido!</Text>
             <Text style={styles.texto}>Usuario: {props.user}</Text>
-            <Text style={styles.texto}>Contraseña: {props.password}</Text>
+            <Text style={styles.texto}>Contraseña: {props.pass}</Text>
         </View>
     )
 }
@@ -14,7 +14,6 @@ function UserLayout(props){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -28,3 +27,5 @@ const styles = StyleSheet.create({
         marginBottom: 20
     }
 });
+
+export default UserLayout
